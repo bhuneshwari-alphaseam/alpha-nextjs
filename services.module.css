@@ -1,0 +1,118 @@
+/* ======== Google Fonts & Global Variables ======== */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --primary-glow: #00f2ff;
+  --secondary-glow: #9f55ff;
+  --dark-bg: #0a0a14;
+  --light-text: #e0e0e0;
+  --card-bg: rgba(20, 20, 40, 0.5);
+  --border-color: rgba(159, 85, 255, 0.25);
+}
+
+/* ======== Base Styles ======== */
+.servicesPage {
+  background-color: var(--dark-bg);
+  font-family: 'Poppins', sans-serif;
+  color: var(--light-text);
+  overflow-x: hidden;
+}
+
+.h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  margin-bottom: 60px;
+  background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow), var(--primary-glow));
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shineText 5s linear infinite;
+}
+
+@keyframes shineText {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* ======== Hero Section ======== */
+.servicesHeroSection {
+  text-align: center;
+  padding: 120px 20px 80px;
+  background: radial-gradient(ellipse at 50% -20%, rgba(159, 85, 255, 0.2), transparent 80%), var(--dark-bg);
+}
+
+.servicesHeroSection h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.8rem, 7vw, 4.5rem);
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  margin-bottom: 20px;
+}
+
+.servicesHeroSection p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.8;
+  max-width: 800px;
+  margin: auto;
+  color: var(--light-text);
+}
+
+/* ======== Services Grid Section ======== */
+.servicesGridSection {
+  padding: 60px 20px;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.loadingText {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--light-text);
+}
+
+/* 3D Service Card */
+.serviceCard3d {
+  --rotateX: 0deg;
+  --rotateY: 0deg;
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(var(--rotateY)) rotateX(var(--rotateX));
+  transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+}
+
+.serviceCard3d:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--secondary-glow);
+}
+
+.serviceCardContent {
+  padding: 40px 30px;
+  text-align: center;
+  transform: translateZ(40px);
+}
+
+.serviceIcon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.serviceCardContent h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 0 15px

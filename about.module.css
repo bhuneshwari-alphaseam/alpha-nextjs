@@ -1,0 +1,308 @@
+/* About.module.css */
+
+.aboutPage {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--dark-bg);
+  font-family: 'Poppins', sans-serif;
+  color: var(--light-text);
+  overflow-x: hidden;
+}
+
+.backgroundContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+.backgroundVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--dark-bg) 5%, rgba(10, 10, 20, 0.7) 100%);
+  backdrop-filter: blur(5px);
+}
+
+.aboutContent {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: auto;
+  padding: 120px 20px 60px;
+  text-align: center;
+}
+
+/* ======== Hero Section ======== */
+.aboutHero {
+  margin-bottom: 80px;
+}
+
+.aboutHero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.8rem, 7vw, 4.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #fff, #c0c0c0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  margin-bottom: 20px;
+}
+
+.aboutHero p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.8;
+  max-width: 800px;
+  margin: auto;
+  color: var(--light-text);
+}
+
+/* ======== General Section Styles ======== */
+.sectionIntro, .coreValuesSection, .journeySectionV3 {
+  margin-bottom: 100px;
+}
+
+.sectionIntro p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  max-width: 900px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+}
+
+/* ======== Core Values - 3D Flip Cards (Responsive) ======== */
+.valuesGrid {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px;
+  margin: 0 -20px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary-glow) var(--dark-bg);
+}
+
+.valuesGrid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.valuesGrid::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+
+.valuesGrid::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-glow);
+  border-radius: 4px;
+}
+
+.flipCardContainer {
+  background-color: transparent;
+  height: 280px;
+  perspective: 1500px;
+  flex: 0 0 250px;
+}
+
+.flipCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flipCardContainer:hover .flipCardInner {
+  transform: rotateY(180deg);
+}
+
+.flipCardFront, .flipCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.flipCardFront .cardIcon { font-size: 3.5rem; color: var(--primary-glow); margin-bottom: 20px; text-shadow: 0 0 15px var(--primary-glow); }
+.flipCardFront h3 { font-size: 1.4rem; font-weight: 700; color: #fff; }
+.flipCardBack { transform: rotateY(180deg); font-size: 1rem; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    overflow-x: visible;
+    margin: 0;
+    padding: 0;
+  }
+  .flipCardContainer {
+    flex: none;
+  }
+}
+
+/* ======== Galactic Roadmap Journey Section V3 ======== */
+.journeySectionV3 {
+  padding: 50px 0;
+}
+
+.roadmapContainer {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.roadmapContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--secondary-glow), var(--primary-glow));
+  box-shadow: 0 0 15px var(--secondary-glow);
+  opacity: 0.5;
+}
+
+.roadmapItem {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80px;
+  width: 100%;
+}
+
+.roadmapItem:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.roadmapItem:nth-child(even) {
+  flex-direction: row;
+}
+
+.roadmapContent {
+  width: 45%;
+  padding: 25px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.roadmapItem:hover .roadmapContent {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.roadmapItem:nth-child(odd) .roadmapContent {
+  text-align: left;
+}
+
+.roadmapItem:nth-child(even) .roadmapContent {
+  text-align: right;
+}
+
+.roadmapYear {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--secondary-glow);
+  margin-bottom: 8px;
+}
+
+.roadmapTitle {
+  font-size: 1.4rem;
+  color: #fff;
+  margin: 0 0 10px 0;
+}
+
+.roadmapDesc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--light-text);
+  margin: 0;
+}
+
+.roadmapNodeContainer {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.roadmapNode {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  border: 3px solid var(--primary-glow);
+  box-shadow: 0 0 20px 5px var(--primary-glow);
+  position: relative;
+  animation: pulse 2s infinite;
+}
+
+/* ======== Final Card ======== */
+.finalCard {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 50px rgba(159, 85, 255, 0.2);
+}
+
+.iconGrid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; color: var(--primary-glow); font-size: 1.1rem; }
+.iconGrid div { display: flex; flex-direction: column; align-items: center; gap: 10px; font-weight: 600; }
+.iconGrid svg { font-size: 2.5rem; }
+.finalText { font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: auto; }
+
+/* ======== Responsive Design ======== */
+@media screen and (max-width: 768px) {
+  .roadmapContainer::before {
+    left: 20px;
+  }
+  .roadmapItem,
+  .roadmapItem:nth-child(odd) {
+    flex-direction: row;
+  }
+  .roadmapContent {
+    width: calc(100% - 60px);
+    text-align: left !important;
+  }
+  .roadmapNodeContainer {
+    position: absolute;
+    left: 0;
+    width: 40px;
+    height: 100%;
+  }
+  .roadmapItem {
+    padding-left: 60px;
+    margin-bottom: 40px;
+  }
+}
